@@ -1,7 +1,8 @@
 import React from "react";
 import './loginStyle.css';
-import DoctorLogin from '../../img/doctorLogin.png'
-import PatientLogin from '../../img/patientLogin.png'
+import DoctorLogin from '../../img/doctorLogin.png';
+import PatientLogin from '../../img/patientLogin.png';
+import {signUp,login} from '../../api/apiFunction'
 import {
     Link, Redirect
 } from "react-router-dom";
@@ -35,15 +36,25 @@ class LoginPage extends React.Component {
 
             });
         }
-        const createAccount=()=>{
-            this.setState({
-                showCreateAccount:!this.state.showCreateAccount,
-                showDoctorModal:false,
-                showPatientModal:false,
-
-            });
+        // const createAccount=()=>{
+        //     this.setState({
+        //         showCreateAccount:!this.state.showCreateAccount,
+        //         showDoctorModal:false,
+        //         showPatientModal:false,
+        //
+        //     });
+        // }
+        //function for create the account
+        const createAccount = async () =>{
+            const check =await signUp({username:'john112',password:'1234',email:'rezaa@gmail.com'});
+            console.log(check);
         }
-
+        //end for this funtion
+        //funtion for sign in
+        const signinAccount =async ()=>{
+            const dataLogin = await login({username:'john112',password:'1234'});
+            console.log(dataLogin);
+        }
         const createAccountBtn=()=>{
             console.log('hi')
             return(
@@ -88,8 +99,8 @@ class LoginPage extends React.Component {
                     <div className='container check-login-field'>
                         <i className="fas fa-hospital-user"></i>
                         <div className='row'>
-                            <button className='col-md-6 btn-primary'>ساخت حساب</button>
-                            <button className='col-md-6 btn-warning'>ورود</button>
+                            <button className='col-md-6 btn-primary' onClick={createAccount}>ساخت حساب</button>
+                            <button className='col-md-6 btn-warning' onClick={signinAccount}>ورود</button>
                         </div>
                     </div>
                 </div>
@@ -128,8 +139,30 @@ class LoginPage extends React.Component {
         }
         else {
                 showModal=null;
-                console.log('hi')
         }
+
+        //modal patient
+        const modalpatientPopup =
+            <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            ...
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>;
 
         return (
             <div className='container-login container'>
