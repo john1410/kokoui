@@ -4,11 +4,11 @@
 /*style for modal*/
 .modalShow{
     /*position: absolute;*/
-    margin: 15px;
+    /*margin-left: 0px !important;*/
     animation: showModal .5s ;
     }
 .modalHide{
-    margin: 15px;
+    /*margin: 15px;*/
     opacity: 0;
     transition: opacity .5s;
     /*animation: hideModal 1s forwards ;*/
@@ -42,4 +42,32 @@
 }
 .fa-user-md,.fa-hospital-user,.fa-file-invoice{
     font-size: 100px;
+}
+/*login field*/
+.login-field img{
+    height: 400px;
+    /*width: 400px;*/
+}
+.modalShow{
+    margin: 20px auto;
+}
+.container-loginField{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 40px 20px;
+}
+.container-loginField img{
+    animation: upDown 1s infinite ;
+}
+@keyframes upDown {
+    0%{
+        transform: translateY(-5px);
+    }
+    50%{
+        transform: translateY(5px);
+    }
+    100%{
+        transform: translateY(-5px);
+    }
 }

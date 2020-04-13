@@ -1,5 +1,7 @@
 import React from "react";
 import './loginStyle.css';
+import DoctorLogin from '../../img/doctorLogin.png'
+import PatientLogin from '../../img/patientLogin.png'
 import {
     Link, Redirect
 } from "react-router-dom";
@@ -21,8 +23,7 @@ class LoginPage extends React.Component {
             this.setState({
                 showDoctorModal:!this.state.showDoctorModal,
                 showPatientModal:false,
-                showCreateAccount:false
-
+                showCreateAccount:false,
             });
         }
         const patientShow=()=>{
@@ -48,7 +49,7 @@ class LoginPage extends React.Component {
                 <Redirect to={'/searchDoctor'} />
             )
         }
-        let showModal=null;
+        let showModal=<div className='modalHide'></div>;
         //doctor modal
         const modaldoctor=
             <div className={this.state.showDoctorModal?'modalShow signin col-md-4':'modalHide signin col-md-4'}>
@@ -102,29 +103,40 @@ class LoginPage extends React.Component {
 
             </div>;
         if(this.state.showDoctorModal){
-            setTimeout(()=>{
-                showModal = modaldoctor;
-                console.log('hi')
-            },10);
-        }
+            showModal = modaldoctor;
+           }
         else if(this.state.showPatientModal){
             showModal = modalPatient;
         }
         else if(this.state.showCreateAccount){
             showModal = modalCreateAccount;
         }
+        else {
+                showModal=null;
+                console.log('hi')
+        }
 
         return (
             <div className='container-login container'>
-                <h1>Hello, world!</h1>
-                <div className="row btn-click-signin">
-                <button onClick={doctorShow} className='btn btn-primary btn-lg'>دکتر <i className="fas fa-user-nurse"></i></button>
-                <button onClick={patientShow} className='btn btn-warning btn-lg'>بیمار <i className="fas fa-user-injured"></i></button>
-                <button onClick={createAccount} className='btn btn-info btn-lg'>ساخت حساب <i className="fas fa-user-alt"></i></button>
-                </div>
+                    <div className='row'>
+                        <div className='col-md-6 login-field'>
+                            <div className='container container-loginField'>
+                                <img src={DoctorLogin} alt='doctorLogin'/>
+                                <button onClick={doctorShow} className='btn btn-primary btn-lg doctodt-btn'>دکتر <i className="fas fa-user-nurse"></i></button>
+                            </div>
+
+                        </div>
+
+                        <div className='col-md-6 login-field'>
+                            <div className='container container-loginField'>
+                            <img src={PatientLogin} alt='patientLogin'/>
+                            <button onClick={patientShow} className='btn btn-warning btn-lg'>بیمار <i className="fas fa-user-injured"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
                 <div className='row'>
                     {showModal}
-
                 </div>
 
             </div>
