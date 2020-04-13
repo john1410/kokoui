@@ -221,4 +221,4 @@ const mapStateToProps = (state) => {
 };
 export default connect(mapStateToProps , {setToken,setUser})(withRouter(LoginPage));
 
-// export default LoginPage;
+//todo:add user to redux after fetch data
