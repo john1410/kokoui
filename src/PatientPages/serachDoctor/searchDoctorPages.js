@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import ListDocotorSearch from "./ListDocotorSearch";
 import axios from "axios";
+import SideProfile from "../profile/sideProfile";
 class SearchDoctorPages extends Component{
 constructor(props) {
     super(props);
@@ -18,8 +19,13 @@ constructor(props) {
         }
 
         return(
-            <div className='container'>
-                <div className='container-search-bar' style={{marginTop:"20px"}}>
+            <div className='row'>
+                <div className='col-md-3'>
+                    <SideProfile/>
+                </div>
+                <div className='col-md-8' style={{margin:'0 auto'}}>
+
+                <div className='container-search-bar'>
                     <div className='row'>
                         <input placeholder='' className='col-md-8 m-2'/>
                         <button placeholder='' className='col-md-2' onClick={getDoctorData}>search</button>
@@ -38,6 +44,7 @@ constructor(props) {
                 </div>
 
 
+            </div>
             </div>
         );
 
