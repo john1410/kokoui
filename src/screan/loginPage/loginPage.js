@@ -13,7 +13,6 @@ class LoginPage extends React.Component {
             showDoctorModal:false,
             showPatientModal:false,
             showCreateAccount:false,
-
         }
     }
 
@@ -49,7 +48,7 @@ class LoginPage extends React.Component {
                 <Redirect to={'/searchDoctor'} />
             )
         }
-
+        let showModal=null;
         //doctor modal
         const modaldoctor=
             <div className={this.state.showDoctorModal?'modalShow signin col-md-4':'modalHide signin col-md-4'}>
@@ -102,6 +101,18 @@ class LoginPage extends React.Component {
                 </div>
 
             </div>;
+        if(this.state.showDoctorModal){
+            setTimeout(()=>{
+                showModal = modaldoctor;
+                console.log('hi')
+            },10);
+        }
+        else if(this.state.showPatientModal){
+            showModal = modalPatient;
+        }
+        else if(this.state.showCreateAccount){
+            showModal = modalCreateAccount;
+        }
 
         return (
             <div className='container-login container'>
@@ -112,9 +123,8 @@ class LoginPage extends React.Component {
                 <button onClick={createAccount} className='btn btn-info btn-lg'>ساخت حساب <i className="fas fa-user-alt"></i></button>
                 </div>
                 <div className='row'>
-                    {modaldoctor}
-                    {modalPatient}
-                    {modalCreateAccount}
+                    {showModal}
+
                 </div>
 
             </div>
