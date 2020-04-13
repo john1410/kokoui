@@ -43,6 +43,7 @@ class LoginPage extends React.Component {
 
             });
         }
+
         const createAccountBtn=()=>{
             console.log('hi')
             return(
@@ -62,7 +63,13 @@ class LoginPage extends React.Component {
                 <input type="password" className="form-control"  placeholder="Password"/>
             </div>
                 <div className="form-group input-field">
-                    <i className="fas fa-user-md"></i>
+                    <div className='container check-login-field'>
+                        <i className="fas fa-user-md"></i>
+                        <div className='row'>
+                            <button className='col-md-6 btn-primary'>ساخت حساب</button>
+                            <button className='col-md-6 btn-warning'>ورود</button>
+                        </div>
+                    </div>
                 </div>
 
             </div>;
@@ -78,8 +85,15 @@ class LoginPage extends React.Component {
                     <input type="password" className="form-control"  placeholder="Password"/>
                 </div>
                 <div className="form-group input-field">
-                    <i className="fas fa-hospital-user"></i>
+                    <div className='container check-login-field'>
+                        <i className="fas fa-hospital-user"></i>
+                        <div className='row'>
+                            <button className='col-md-6 btn-primary'>ساخت حساب</button>
+                            <button className='col-md-6 btn-warning'>ورود</button>
+                        </div>
+                    </div>
                 </div>
+
 
             </div>;
 
@@ -102,6 +116,7 @@ class LoginPage extends React.Component {
                 </div>
 
             </div>;
+
         if(this.state.showDoctorModal){
             showModal = modaldoctor;
            }
